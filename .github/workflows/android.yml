@@ -30,5 +30,3 @@ jobs:
         with:
           name: nutripet-apk
           path: build/app/outputs/flutter-apk/app-release.apk
-EOF
-code .github/workflows/android.yml
