@@ -1,15 +1,26 @@
 
+name: Build Android APK
 
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - uses: subosito/flgit add .github/workflows/android.yml
-git commit -m "Arreglar workflow Android"
-git push origin main
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
 
-utter build apk --release
+      - run: flutter pub get
+
+      - run: flutter build apk --release
 
       - uses: actions/upload-artifact@v4
         with:
