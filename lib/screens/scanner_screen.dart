@@ -1,10 +1,17 @@
-
+//
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import '../services/pet_food_api.dart';
 
-class ScannerScreen extends StatelessWidget {
+class ScannerScreen extends StatefulWidget {
   const ScannerScreen({super.key});
+
+  @override
+  State<ScannerScreen> createState() => _ScannerScreenState();
+}
+
+class _ScannerScreenState extends State<ScannerScreen> {
+  bool _procesando = false;
 
   @override
   Widget build(BuildContext context) {
@@ -14,34 +21,26 @@ class ScannerScreen extends StatelessWidget {
       ),
       body: MobileScanner(
         onDetect: (capture) async {
+          if (_procesando) return;
+          _procesando = true;
+
           final barcode = capture.barcodes.first;
 
-          if (barcode.rawValue == null) return;
+          if (barcode.rawValue == null) {
+            _procesando = false;
+            return;
+          }
 
           final codigo = barcode.rawValue!;
 
           final producto = await PetFoodApi.buscarProducto(codigo);
 
-          if (!context.mounted) return;
+          if (!mounted) return;
 
-          if (producto != null) {
-            final nombre = producto["product_name"] ?? "Sin nombre";
-            final marca = producto["brands"] ?? "Marca desconocida";
-
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text("✅ $nombre ($marca)"),
-              ),
-            );
-          } else {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text("❌ Producto no encontrado"),
-              ),
-            );
-          }
-
-          Navigator.pop(context, codigo);
+          Navigator.pop(context, {
+            "codigo": codigo,
+            "producto": producto,
+          });
         },
       ),
     );
