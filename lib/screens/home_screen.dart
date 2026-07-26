@@ -1,6 +1,7 @@
-
+//
 import 'package:flutter/material.dart';
 import 'scanner_screen.dart';
+import 'product_screen.dart';
 import '../services/pet_food_api.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -28,22 +29,12 @@ class HomeScreen extends StatelessWidget {
     if (!context.mounted) return;
 
     if (producto != null) {
-      final nombre = producto["product_name"] ?? "Sin nombre";
-      final marca = producto["brands"] ?? "Marca desconocida";
-
-      showDialog(
-        context: context,
-        builder: (_) => AlertDialog(
-          title: const Text("Producto encontrado"),
-          content: Text(
-            "Nombre: $nombre\n\nMarca: $marca",
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => ProductScreen(
+            producto: producto,
           ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text("Aceptar"),
-            ),
-          ],
         ),
       );
     } else {
@@ -51,7 +42,7 @@ class HomeScreen extends StatelessWidget {
         context: context,
         builder: (_) => AlertDialog(
           title: const Text("Producto no encontrado"),
-          content: Text(
+          content: const Text(
             "No existe información para este código de barras.",
           ),
           actions: [
