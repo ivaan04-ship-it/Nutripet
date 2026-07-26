@@ -60,6 +60,17 @@ class ProductScreen extends StatelessWidget {
                         }),
                         const Spacer(),
                         _circle(const Icon(Icons.favorite_border), () {}),
+
+                        ListTile(
+                          leading: const Icon(Icons.science),
+                          title: const Text("Cenizas"),
+                          trailing: Text(producto.cenizas != null ? "${producto.cenizas} %" : "--"),
+                        ),
+                        ListTile(
+                          leading: const Icon(Icons.water_drop),
+                          title: const Text("Humedad"),
+                          trailing: Text(producto.humedad != null ? "${producto.humedad} %" : "--"),
+                        ),
                       ],
                     ),
                   ),
@@ -130,7 +141,7 @@ class ProductScreen extends StatelessWidget {
                     ),
                   ),
                   _card(
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Composición",
@@ -141,17 +152,17 @@ class ProductScreen extends StatelessWidget {
                         ListTile(
                           leading: Icon(Icons.egg_alt),
                           title: Text("Proteína"),
-                          trailing: Text("-- %"),
+                          trailing: Text(producto.proteina != null ? "${producto.proteina} %" : "--"),
                         ),
                         ListTile(
                           leading: Icon(Icons.water_drop),
                           title: Text("Grasa"),
-                          trailing: Text("-- %"),
+                          trailing: Text(producto.grasa != null ? "${producto.grasa} %" : "--"),
                         ),
                         ListTile(
                           leading: Icon(Icons.grass),
                           title: Text("Fibra"),
-                          trailing: Text("-- %"),
+                          trailing: Text(producto.fibra != null ? "${producto.fibra} %" : "--"),
                         ),
                       ],
                     ),
