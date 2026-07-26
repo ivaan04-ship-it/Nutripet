@@ -1,8 +1,10 @@
 //
 import 'package:flutter/material.dart';
-import 'scanner_screen.dart';
-import 'product_screen.dart';
+
+import '../models/product.dart';
 import '../services/pet_food_api.dart';
+import 'product_screen.dart';
+import 'scanner_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,7 +26,8 @@ class HomeScreen extends StatelessWidget {
       ),
     );
 
-    final producto = await PetFoodApi.buscarProducto(codigo);
+    final Product? producto =
+        await PetFoodApi.buscarProducto(codigo);
 
     if (!context.mounted) return;
 
@@ -177,11 +180,17 @@ class _MenuCard extends StatelessWidget {
         padding: const EdgeInsets.all(18),
         child: Column(
           children: [
-            Icon(icon, size: 42, color: Colors.green),
+            Icon(
+              icon,
+              size: 42,
+              color: Colors.green,
+            ),
             const SizedBox(height: 12),
             Text(
               title,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(height: 6),
             Text(
