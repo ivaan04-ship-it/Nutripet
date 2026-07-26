@@ -1,8 +1,69 @@
+
 import 'package:flutter/material.dart';
 import 'scanner_screen.dart';
+import '../services/pet_food_api.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+  Future<void> _escanear(BuildContext context) async {
+    final codigo = await Navigator.push<String>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const ScannerScreen(),
+      ),
+    );
+
+    if (codigo == null || !context.mounted) return;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text("Buscando producto..."),
+        duration: Duration(seconds: 1),
+      ),
+    );
+
+    final producto = await PetFoodApi.buscarProducto(codigo);
+
+    if (!context.mounted) return;
+
+    if (producto != null) {
+      final nombre = producto["product_name"] ?? "Sin nombre";
+      final marca = producto["brands"] ?? "Marca desconocida";
+
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: const Text("Producto encontrado"),
+          content: Text(
+            "Nombre: $nombre\n\nMarca: $marca",
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Aceptar"),
+            ),
+          ],
+        ),
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: const Text("Producto no encontrado"),
+          content: Text(
+            "No existe información para este código de barras.",
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Aceptar"),
+            ),
+          ],
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,22 +103,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               height: 60,
               child: ElevatedButton.icon(
-                onPressed: () async {
-                  final codigo = await Navigator.push<String>(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const ScannerScreen(),
-                    ),
-                  );
-
-                  if (codigo != null && context.mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text("Código leído: $codigo"),
-                      ),
-                    );
-                  }
-                },
+                onPressed: () => _escanear(context),
                 icon: const Icon(Icons.qr_code_scanner),
                 label: const Text(
                   "Escanear código de barras",
