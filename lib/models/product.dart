@@ -1,4 +1,3 @@
-//
 class Product {
   final String nombre;
   final String marca;
@@ -6,7 +5,6 @@ class Product {
   final String ingredientes;
   final String codigoBarras;
 
-  // NUEVOS CAMPOS
   final double? proteina;
   final double? grasa;
   final double? fibra;
@@ -21,13 +19,11 @@ class Product {
     required this.imagen,
     required this.ingredientes,
     required this.codigoBarras,
-
     this.proteina,
     this.grasa,
     this.fibra,
     this.cenizas,
     this.humedad,
-
     this.categoria = "",
   });
 
@@ -42,32 +38,23 @@ class Product {
 
     return Product(
       nombre: json["product_name"] ?? "Sin nombre",
-
       marca: json["brands"] ?? "Marca desconocida",
-
       imagen: json["image_url"] ?? "",
-
-      ingredientes:
-          json["ingredients_text"] ?? "No disponibles",
-
+      ingredientes: json["ingredients_text"] ?? "No disponibles",
       codigoBarras: json["code"] ?? "",
-
       categoria: json["categories"] ?? "",
-
-      proteina:
-          leerNumero(nutriments["proteins_100g"]),
-
-      grasa:
-          leerNumero(nutriments["fat_100g"]),
-
-      fibra:
-          leerNumero(nutriments["fiber_100g"]),
-
-      cenizas:
-          leerNumero(nutriments["ash_100g"]),
-
-      humedad:
-          leerNumero(nutriments["moisture_100g"]),
+      proteina: leerNumero(nutriments["proteins_100g"]),
+      grasa: leerNumero(nutriments["fat_100g"]),
+      fibra: leerNumero(nutriments["fiber_100g"]),
+      cenizas: leerNumero(nutriments["ash_100g"]),
+      humedad: leerNumero(nutriments["moisture_100g"]),
     );
   }
+
+  bool get tieneDatosNutricionales =>
+      proteina != null ||
+      grasa != null ||
+      fibra != null ||
+      cenizas != null ||
+      humedad != null;
 }
