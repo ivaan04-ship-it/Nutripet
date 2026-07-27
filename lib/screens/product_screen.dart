@@ -539,31 +539,31 @@ child: child,
 }
 
 Widget _circle(
-Widget icon,
-VoidCallback onTap,
+  Widget icon,
+  VoidCallback onTap,
 ) {
-return ClipRRect(
-borderRadius: BorderRadius.circular(100),
-child: BackdropFilter(
-filter: ImageFilter.blur(
-sigmaX: 12,
-sigmaY: 12,
-),
-child: Container(
-decoration: BoxDecoration(
-Colors.white.withValues(alpha: 0.65)
-shape: BoxShape.circle,
-border: Border.all(
-Colors.white.withValues(alpha: 0.4)
-),
-),
-child: IconButton(
-icon: icon,
-splashRadius: 24,
-onPressed: onTap,
-),
-),
-),
-);
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(100),
+    child: BackdropFilter(
+      filter: ImageFilter.blur(
+        sigmaX: 12,
+        sigmaY: 12,
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.65),
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: Colors.white.withOpacity(0.4),
+          ),
+          ),
+        child: IconButton(
+          icon: icon,
+          splashRadius: 24,
+          onPressed: onTap,
+        ),
+      ),    
+  );
+}
 }
 }
