@@ -55,16 +55,16 @@ class ProductTile extends StatelessWidget {
     );
   }
 
-  int _calculateScore(Product product) {
-    int score = 50;
+  
+int _calculateScore(Product product) {
+  int score = 50;
 
-    score += (product.proteina / 2).round();
-    score += (product.grasa / 3).round();
-    score -= product.cenizas.round();
+  score += ((product.proteina ?? 0) / 2).round();
+  score += ((product.grasa ?? 0) / 3).round();
+  score -= (product.cenizas ?? 0).round();
 
-    return score.clamp(0, 100);
-  }
-
+  return score.clamp(0, 100);
+}
   Color _scoreColor(Product product) {
     final score = _calculateScore(product);
 

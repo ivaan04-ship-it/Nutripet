@@ -556,14 +556,14 @@ Widget _circle(
           border: Border.all(
             color: Colors.white.withOpacity(0.4),
           ),
-          ),
+        ),
         child: IconButton(
           icon: icon,
           splashRadius: 24,
           onPressed: onTap,
         ),
-      ),    
+      ),
+    ),
   );
-}
 }
 }
