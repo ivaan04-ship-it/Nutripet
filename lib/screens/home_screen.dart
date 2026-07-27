@@ -62,13 +62,34 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.qr_code_scanner),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => const ScannerScreen(),
-            ),
-          );
+      onPressed: () async {
+  final codigo = await Navigator.push<String>(
+    context,
+    MaterialPageRoute(
+      builder: (_) => const ScannerScreen(),
+    ),
+  );
+
+  if (!mounted || codigo == null) return;
+
+  final producto = await repository.getByBarcode(codigo);
+
+  if (producto != null) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => ProductScreen(
+          producto: producto,
+        ),
+      ),
+    );
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text("Producto no encontrado"),
+      ),
+    );
+  },
         },
       ),
       body: Column(
