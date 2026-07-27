@@ -1,0 +1,43 @@
+import '../models/product.dart';
+
+final List<Product> demoProducts = [
+  const Product(
+    nombre: 'Acana Puppy Recipe',
+    marca: 'Acana',
+    imagen: '',
+    ingredientes: 'Pollo fresco, pavo fresco, huevo, arenque...',
+    codigoBarras: '000001',
+    proteina: 33,
+    grasa: 20,
+    fibra: 5,
+    cenizas: 7,
+    humedad: 12,
+    categoria: 'Cachorros',
+  ),
+  const Product(
+    nombre: 'Orijen Original',
+    marca: 'Orijen',
+    imagen: '',
+    ingredientes: 'Pollo, pavo, pescado, huevos...',
+    codigoBarras: '000002',
+    proteina: 38,
+    grasa: 18,
+    fibra: 4,
+    cenizas: 8,
+    humedad: 12,
+    categoria: 'Adultos',
+  ),
+  const Product(
+    nombre: 'Ownat Grain Free Adult',
+    marca: 'Ownat',
+    imagen: '',
+    ingredientes: 'Pollo, patata, guisantes...',
+    codigoBarras: '000003',
+    proteina: 30,
+    grasa: 16,
+    fibra: 3,
+    cenizas: 7,
+    humedad: 10,
+    categoria: 'Adultos',
+  ),
+];
