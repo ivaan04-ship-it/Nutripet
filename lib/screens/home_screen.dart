@@ -89,10 +89,10 @@ class _HomeScreenState extends State<HomeScreen> {
         content: Text("Producto no encontrado"),
       ),
     );
-  },
-        },
-      ),
-      body: Column(
+  }
+},
+),
+body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(16),
