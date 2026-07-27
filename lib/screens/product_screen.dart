@@ -551,10 +551,10 @@ sigmaY: 12,
 ),
 child: Container(
 decoration: BoxDecoration(
-color: Colors.white.withOpacity(0.65),
+Colors.white.withValues(alpha: 0.65)
 shape: BoxShape.circle,
 border: Border.all(
-color: Colors.white.withOpacity(0.4),
+Colors.white.withValues(alpha: 0.4)
 ),
 ),
 child: IconButton(
