@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-
+import '../widgets/home/header/home_header.dart';
 import '../models/product.dart';
 import '../repositories/product_repository.dart';
 import '../widgets/Search_box.dart';
@@ -56,11 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Nutripet"),
-        centerTitle: true,
-      ),
-      floatingActionButton: FloatingActionButton(
+      
+    
+    floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.qr_code_scanner),
       onPressed: () async {
   final codigo = await Navigator.push<String>(
@@ -94,8 +92,9 @@ class _HomeScreenState extends State<HomeScreen> {
 ),
 body: Column(
         children: [
+          const HomeHeader(),
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
             child: SearchBox(
               controller: searchController,
               onChanged: search,
