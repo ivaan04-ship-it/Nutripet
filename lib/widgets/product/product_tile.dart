@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/product.dart';
-import '../services/nutripet_score.dart';
+
+import '../../models/product.dart';
+import '../../services/nutripet_score.dart';
 
 class ProductTile extends StatelessWidget {
   final Product product;

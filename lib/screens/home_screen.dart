@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../models/product.dart';
 import '../repositories/product_repository.dart';
 import '../widgets/Search_box.dart';
-import '../widgets/product_tile.dart';
+import '../widgets/product/product_tile.dart';
 import 'product_screen.dart';
 import 'scanner_screen.dart';
 

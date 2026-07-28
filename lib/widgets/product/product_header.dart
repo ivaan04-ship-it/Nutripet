@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'score_widget.dart';
+import '../../models/product.dart';
 
-import '../models/product.dart';
-import 'score_widget_v.dart';
 
 class ProductHeader extends StatelessWidget {
   final Product product;

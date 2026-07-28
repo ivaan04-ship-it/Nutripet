@@ -1,51 +1,66 @@
+
 import 'package:flutter/material.dart';
 
+import 'app_colors.dart';
+import 'app_radius.dart';
+import 'app_text_styles.dart';
+
 class AppTheme {
-  static ThemeData get lightTheme {
-      return ThemeData(
-            useMaterial3: true,
-                  scaffoldBackgroundColor: const Color(0xFFF8F8F4),
+  AppTheme._();
 
-                        colorScheme: ColorScheme.fromSeed(
-                                seedColor: const Color(0xFF66BB6A),
-                                        brightness: Brightness.light,
-                                              ),
+  static ThemeData get light => ThemeData(
+        useMaterial3: true,
 
-                                                    appBarTheme: const AppBarTheme(
-                                                            backgroundColor: Color(0xFFF8F8F4),
-                                                                    foregroundColor: Colors.black87,
-                                                                            elevation: 0,
-                                                                                    centerTitle: true,
-                                                                                          ),
+        scaffoldBackgroundColor: AppColors.background,
 
-                                                                                                elevatedButtonTheme: ElevatedButtonThemeData(
-                                                                                                        style: ElevatedButton.styleFrom(
-                                                                                                                  backgroundColor: const Color(0xFF66BB6A),
-                                                                                                                            foregroundColor: Colors.white,
-                                                                                                                                      minimumSize: const Size(double.infinity, 55),
-                                                                                                                                                shape: RoundedRectangleBorder(
-                                                                                                                                                            borderRadius: BorderRadius.circular(18),
-                                                                                                                                                                      ),
-                                                                                                                                                                              ),
-                                                                                                                                                                                    ),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppColors.primary,
+          brightness: Brightness.light,
+        ),
 
-                                                                                                                                                                                          inputDecorationTheme: InputDecorationTheme(
-                                                                                                                                                                                                  filled: true,
-                                                                                                                                                                                                          fillColor: Colors.white,
-                                                                                                                                                                                                                  border: OutlineInputBorder(
-                                                                                                                                                                                                                            borderRadius: BorderRadius.circular(18),
-                                                                                                                                                                                                                                      borderSide: BorderSide.none,
-                                                                                                                                                                                                                                              ),
-                                                                                                                                                                                                                                                      prefixIconColor: Colors.grey,
-                                                                                                                                                                                                                                                            ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: AppColors.surface,
+          foregroundColor: AppColors.textPrimary,
+          elevation: 0,
+          centerTitle: false,
+        ),
 
-                                                                                                                                                                                                                                                                  cardTheme: CardThemeData(
-                                                                                                                                                                                                                                                                          color: Colors.white,
-                                                                                                                                                                                                                                                                                  elevation: 2,
-                                                                                                                                                                                                                                                                                          shape: RoundedRectangleBorder(
-                                                                                                                                                                                                                                                                                                    borderRadius: BorderRadius.circular(20),
-                                                                                                                                                                                                                                                                                                            ),
-                                                                                                                                                                                                                                                                                                                  ),
-                                                                                                                                                                                                                                                                                                                      );
-                                                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                                                        }
+        cardTheme: CardThemeData(
+          color: AppColors.surface,
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppRadius.lg),
+          ),
+        ),
+
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppColors.primary,
+            foregroundColor: Colors.white,
+            textStyle: AppTextStyles.button,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppRadius.md),
+            ),
+          ),
+        ),
+
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: AppColors.surface,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(AppRadius.md),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(AppRadius.md),
+            borderSide: const BorderSide(color: AppColors.border),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(AppRadius.md),
+            borderSide: const BorderSide(
+              color: AppColors.primary,
+              width: 2,
+            ),
+          ),
+        ),
+      );
+}
