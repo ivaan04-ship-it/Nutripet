@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/product.dart';
+import '../services/nutripet_score.dart';
 
 class ProductTile extends StatelessWidget {
   final Product product;
@@ -44,29 +45,21 @@ class ProductTile extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
           child: Text(
-            '${_calculateScore(product)}/100',
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+  '${ScoreCalculator.calculate(product).score.toInt()}/100',
+  style: const TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+  ),
+),
         ),
       ),
     );
   }
 
-  
-int _calculateScore(Product product) {
-  int score = 50;
 
-  score += ((product.proteina ?? 0) / 2).round();
-  score += ((product.grasa ?? 0) / 3).round();
-  score -= (product.cenizas ?? 0).round();
-
-  return score.clamp(0, 100);
-}
   Color _scoreColor(Product product) {
-    final score = _calculateScore(product);
+    final resultado = ScoreCalculator.calculate(product);
+    final score = resultado.score;
 
     if (score >= 90) return Colors.green;
     if (score >= 75) return Colors.lightGreen;

@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import '../models/product.dart';
-import '../services/score_calculator.dart';
+import '../services/nutripet_score.dart';
 import '../widgets/score_widget_v.dart';
 
 class ProductScreen extends StatelessWidget {
