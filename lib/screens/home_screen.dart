@@ -9,6 +9,8 @@ import 'product_screen.dart';
 import 'scanner_screen.dart';
 import '../widgets/home/dynamic_card/home_dynamic_card.dart';
 import '../theme/app_text_styles.dart';
+import '../widgets/home/categories/categories_section.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -110,7 +112,7 @@ body: Column(
                         style: AppTextStyles.title,
                           ),
                           ),
-          
+          const CategoriesSection(),
                     Expanded(
             child: loading
                 ? const Center(
