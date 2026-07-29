@@ -1,7 +1,11 @@
+
 class Product {
   final String nombre;
   final String marca;
+
+  /// URL de la imagen (Firestore) o imagen de OpenFoodFacts
   final String imagen;
+
   final String ingredientes;
   final String codigoBarras;
 
@@ -27,6 +31,7 @@ class Product {
     this.categoria = "",
   });
 
+  /// OpenFoodFacts
   factory Product.fromJson(Map<String, dynamic> json) {
     final nutriments = json["nutriments"] ?? {};
 
@@ -48,6 +53,31 @@ class Product {
       fibra: leerNumero(nutriments["fiber_100g"]),
       cenizas: leerNumero(nutriments["ash_100g"]),
       humedad: leerNumero(nutriments["moisture_100g"]),
+    );
+  }
+
+  /// Firestore
+  factory Product.fromFirestore(Map<String, dynamic> data) {
+    double? leerNumero(dynamic valor) {
+      if (valor == null) return null;
+      if (valor is num) return valor.toDouble();
+      return double.tryParse(valor.toString());
+    }
+
+    return Product(
+      nombre: data["nombre"] ?? "",
+      marca: data["marca"] ?? "",
+      imagen: data["imagenUrl"] ?? "",
+      ingredientes: (data["ingredientes"] is List)
+          ? (data["ingredientes"] as List).join(", ")
+          : "",
+      codigoBarras: data["codigoBarras"] ?? "",
+      categoria: data["categoria"] ?? "",
+      proteina: leerNumero(data["proteina"]),
+      grasa: leerNumero(data["grasa"]),
+      fibra: leerNumero(data["fibra"]),
+      cenizas: leerNumero(data["cenizas"]),
+      humedad: leerNumero(data["humedad"]),
     );
   }
 
