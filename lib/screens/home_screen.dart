@@ -20,7 +20,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final ProductRepository repository = const ProductRepository();
+  final ProductRepository repository =  ProductRepository();
 
   final TextEditingController searchController =
       TextEditingController();
