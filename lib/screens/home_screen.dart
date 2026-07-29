@@ -7,6 +7,8 @@ import '../widgets/Search_box.dart';
 import '../widgets/product/product_tile.dart';
 import 'product_screen.dart';
 import 'scanner_screen.dart';
+import '../widgets/home/dynamic_card/home_dynamic_card.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -100,6 +102,7 @@ body: Column(
               onChanged: search,
             ),
           ),
+          const HomeDynamicCard(),
                     Expanded(
             child: loading
                 ? const Center(
