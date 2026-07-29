@@ -103,6 +103,14 @@ body: Column(
             ),
           ),
           const HomeDynamicCard(),
+          const Padding(
+              padding: EdgeInsets.fromLTRB(24, 8, 24, 12),
+                child: Text(
+                    "🏆 Mejor valorados",
+                        style: AppTextStyles.title,
+                          ),
+                          ),
+          )
                     Expanded(
             child: loading
                 ? const Center(
