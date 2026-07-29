@@ -14,11 +14,14 @@ class HomeDynamicCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.lg,
-        vertical: AppSpacing.sm,
+        vertical: AppSpacing.xs,
       ),
       child: Container(
         width: double.infinity,
-        padding: const EdgeInsets.all(AppSpacing.lg),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.lg,
+          vertical: AppSpacing.md,
+        ),
         decoration: BoxDecoration(
           color: AppColors.primary.withValues(alpha: 0.08),
           borderRadius: BorderRadius.circular(AppRadius.lg),
@@ -31,18 +34,23 @@ class HomeDynamicCard extends StatelessWidget {
               style: AppTextStyles.title,
             ),
 
-            const SizedBox(height: AppSpacing.sm),
+            const SizedBox(height: 6),
 
             const Text(
-              "Los primeros ingredientes de un pienso son los más importantes. Si ves cereales antes que carne, merece la pena comparar otras opciones.",
+              "Los primeros ingredientes son los más importantes. Si aparecen cereales antes que la carne, compara otras opciones.",
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
               style: AppTextStyles.body,
             ),
-
-            const SizedBox(height: AppSpacing.md),
 
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                  minimumSize: const Size(0, 32),
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
                 onPressed: () {},
                 child: const Text("Leer más"),
               ),
