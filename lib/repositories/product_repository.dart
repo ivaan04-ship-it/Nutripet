@@ -5,7 +5,7 @@ import '../data/demo_products.dart';
 import '../models/product.dart';
 
 class ProductRepository {
-  const ProductRepository();
+   ProductRepository();
 
   final CollectionReference<Map<String, dynamic>> _products =
       FirebaseFirestore.instance.collection('Products');
