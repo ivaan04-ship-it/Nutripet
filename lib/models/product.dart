@@ -68,7 +68,7 @@ class Product {
     return Product(
       nombre: data["nombre"] ?? "",
       marca: data["marca"] ?? "",
-      imagen: data["imagen"] ?? "",
+      imagen: data["imagenUrl"] ?? "",
       ingredientes: (data["ingredientes"] is List)
           ? (data["ingredientes"] as List).join(", ")
           : "",
