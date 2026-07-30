@@ -63,6 +63,9 @@ class Product {
       if (valor is num) return valor.toDouble();
       return double.tryParse(valor.toString());
     }
+debugPrint(data.toString());
+
+    debugPrint("Firestore imagenUrl: ${data["imagenUrl"]}");
 
     return Product(
       nombre: data["nombre"] ?? "",
