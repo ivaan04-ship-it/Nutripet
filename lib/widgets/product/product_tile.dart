@@ -18,7 +18,7 @@ class ProductTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final result = ScoreCalculator.calculate(product);
     final score = result.score.toInt();
-
+debugPrint("Imagen: ${product.imagen}");
     return InkWell(
       borderRadius: BorderRadius.circular(20),
       onTap: onTap,
