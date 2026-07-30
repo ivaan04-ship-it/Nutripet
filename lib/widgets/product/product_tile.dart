@@ -39,15 +39,27 @@ class ProductTile extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CircleAvatar(
-              radius: 34,
-              backgroundColor: Colors.grey.shade200,
-              child: const Icon(
-                Icons.pets,
-                size: 34,
-                color: Colors.green,
-              ),
-            ),
+            ClipRRect(
+  borderRadius: BorderRadius.circular(16),
+  child: Image.network(
+    product.imagen,
+    width: 68,
+    height: 68,
+    fit: BoxFit.contain,
+    errorBuilder: (context, error, stackTrace) {
+      return Container(
+        width: 68,
+        height: 68,
+        color: Colors.grey.shade200,
+        child: const Icon(
+          Icons.pets,
+          color: Colors.green,
+          size: 34,
+        ),
+      );
+    },
+  ),
+),
 
             const SizedBox(width: 16),
 
